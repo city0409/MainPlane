@@ -58,4 +58,5 @@ public class PauseManager : MonoBehaviour
 #endif 
     }
 
+    private void DisPlay() { }
 }

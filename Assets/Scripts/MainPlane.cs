@@ -108,7 +108,7 @@ public class MainPlane : MonoBehaviour, IHealth
 
         }
     }
- 
+
     public void Damage(int val)
     {
         if (Health <= 0) return;

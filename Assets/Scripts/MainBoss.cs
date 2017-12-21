@@ -15,7 +15,6 @@ public class MainBoss : EnemyBase
     [SerializeField]
     private float repeatRate;
 
-    private int health = 100;
     private float MaxX;
     private float MaxY;
     private float MinX;

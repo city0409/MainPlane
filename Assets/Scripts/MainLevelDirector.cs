@@ -24,11 +24,22 @@ public class MainLevelDirector : MonoBehaviour
     private GameObject bossPlane;
     //[SerializeField]
     private PlayerData data;
+    private GameData dataVolume;
+
     private int score;
     private int maxScore;
     private int playerLifeCount = 3;
-   
+    private int musicVolume;
+    private int effectVolume;
 
+    public int MusicVolume
+    {
+        get { return musicVolume; }
+    }
+    public int EffectVolume
+    {
+        get { return effectVolume; }
+    }
     public int Score
     {
         get { return score; }
@@ -75,7 +86,7 @@ public class MainLevelDirector : MonoBehaviour
         mainPlane = Resources.Load<MainPlane>("Prefab/Player/MainPlane");
         mainEnemy = Resources.Load<GameObject>("Prefab/Enemys/Enemy");
         bossPlane = Resources.Load<GameObject>("Prefab/Boss");
-
+        dataVolume = Resources.Load<GameData>("GameData");
         data = Resources.Load<PlayerData>("PlayerData");
         maxScore = data.maxScore;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour ,IHealth 
 {
-
+    [SerializeField]
     protected int health = 100;
     public int Health
     {

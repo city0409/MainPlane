@@ -17,29 +17,16 @@ public class MainLevelDirector : MonoBehaviour
             return instance;
         }
     }
-    //[SerializeField  ]
     private MainPlane mainPlane;
-    //[SerializeField]
     private GameObject mainEnemy;
     private GameObject bossPlane;
-    //[SerializeField]
     private PlayerData data;
     private GameData dataVolume;
 
     private int score;
     private int maxScore;
     private int playerLifeCount = 3;
-    private int musicVolume;
-    private int effectVolume;
-
-    public int MusicVolume
-    {
-        get { return musicVolume; }
-    }
-    public int EffectVolume
-    {
-        get { return effectVolume; }
-    }
+    
     public int Score
     {
         get { return score; }

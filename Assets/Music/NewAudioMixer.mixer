@@ -15,7 +15,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 05e9e82ce8ae52a4bb7579b9fd3952fe
+    name: Bg
+  - guid: 3ab30b71deda8744580c2723bce1c5b7
+    name: Fx
   m_AudioMixerGroupViews:
   - guids:
     - 29a6be4b72da44643a5f14034dfdb3ab
@@ -65,8 +69,9 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 0df316050adf8da43959c89452307ab2
   m_FloatValues:
-    3ab30b71deda8744580c2723bce1c5b7: 1.1400865
-    05e9e82ce8ae52a4bb7579b9fd3952fe: 0
+    3ab30b71deda8744580c2723bce1c5b7: -7.436929
+    05e9e82ce8ae52a4bb7579b9fd3952fe: -10.867776
+    b650cd7c323950543b1c948413642a0a: -10.867785
   m_TransitionOverrides: {}
 --- !u!243 &243276938666059766
 AudioMixerGroupController:
@@ -137,7 +142,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 356c6044efd08554aa278fefd82c7771
   m_FloatValues:
-    3ab30b71deda8744580c2723bce1c5b7: -0.27209902
-    05e9e82ce8ae52a4bb7579b9fd3952fe: -6.133707
+    3ab30b71deda8744580c2723bce1c5b7: -7.894088
+    05e9e82ce8ae52a4bb7579b9fd3952fe: -7.436929
     b650cd7c323950543b1c948413642a0a: -6.133707
   m_TransitionOverrides: {}

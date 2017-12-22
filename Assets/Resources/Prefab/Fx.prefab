@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122998330004298}
   - component: {fileID: 212393265591410690}
-  - component: {fileID: 111178668951645636}
   - component: {fileID: 95266799442958106}
   m_Layer: 0
   m_Name: Fx
@@ -59,20 +58,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111178668951645636
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225382590156504}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!212 &212393265591410690
 SpriteRenderer:
   m_ObjectHideFlags: 1

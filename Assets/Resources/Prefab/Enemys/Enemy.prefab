@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212094901503997148}
   - component: {fileID: 61601863958186624}
   - component: {fileID: 114073890944292698}
-  - component: {fileID: 111695881340386578}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -68,20 +67,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.44, y: 0.5}
   m_EdgeRadius: 0
---- !u!111 &111695881340386578
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1720154912566234}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 0971d492c47e31b42b1fde458b8c8b01, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &114073890944292698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,8 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77c29fa2b0746b419ad21a6fb25f448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   enemyPlane: {fileID: 4694942946900140}
-  fx: {fileID: 111695881340386578}
+  fx: {fileID: 0}
   speed: 5
   bullet: {fileID: 1492595335320190, guid: c68d2048f76d10c40868f860d66ca859, type: 2}
   repeatRate: 0.5

@@ -15,14 +15,16 @@ public class MainCoin : MonoBehaviour
         audioCoin = GetComponent<AudioSource>();
 
     }
-    private void OnTriggerEnter2D(Collider2D plane)
+    private void OnTriggerEnter2D(Collider2D collsion)
     {
-        if (plane.gameObject .CompareTag ("Player"))
+        if (collsion.gameObject .CompareTag ("Player"))
         {
             collCoin.enabled = false;
             audioCoin.Play();
             rend.enabled = false;
             MainLevelDirector.Instance.Score += 10;
+            Weapon weapon = collsion.gameObject.GetComponent<Weapon>();
+            weapon.ChangeWeaponType((int)weapon .CurrentWeaponType +1 );
             Destroy(this .gameObject , audioCoin.clip.length );
 
         }

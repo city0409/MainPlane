@@ -20,6 +20,7 @@ public class MainPlane : MonoBehaviour, IHealth
     //private Vector3 direction;
     private int health = 100;
     //private Animation anim;
+    private Weapon weapon;
 
     //enum State { Blink, Idle }
     //private State myState;
@@ -42,6 +43,7 @@ public class MainPlane : MonoBehaviour, IHealth
 
     private void Awake()
     {
+        weapon = GetComponent<Weapon>();
         rig = GetComponent<Rigidbody2D>();
         rig.velocity = Vector3.up;
         rend = GetComponent<Renderer>();
@@ -70,7 +72,11 @@ public class MainPlane : MonoBehaviour, IHealth
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Fire();
+            FireOnce();
+        }
+        if (Input.GetButton("Fire1"))
+        {
+            FireStart();
         }
         ClampFrame();
     }
@@ -91,10 +97,7 @@ public class MainPlane : MonoBehaviour, IHealth
     {
         rig.velocity = direction * speed;
     }
-    private void Fire()
-    {
-        Instantiate(bullet, transform.position, Quaternion.identity);
-    }
+   
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if (!coll.gameObject.CompareTag(gameObject.tag))
@@ -109,6 +112,14 @@ public class MainPlane : MonoBehaviour, IHealth
         }
     }
 
+    public void FireStart()
+    {
+        weapon.FireStart();
+    }
+    public void FireOnce()
+    {
+        weapon.FireOnce ();
+    }
     public void Damage(int val)
     {
         if (Health <= 0) return;

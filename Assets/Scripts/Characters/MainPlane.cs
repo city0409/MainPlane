@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainPlane : MonoBehaviour, IHealth
 {
+    protected float horizontalMove;
+    protected float verticalMove;
     [SerializeField]
     private Transform bullet;
     [SerializeField]
@@ -87,7 +89,14 @@ public class MainPlane : MonoBehaviour, IHealth
                                              Mathf.Clamp(transform.position.y, MinY, MaxY),
                                              transform.position.z);
     }
-
+    public virtual void SetHorizontalMove(float value)
+    {
+        horizontalMove = value;
+    }
+    public virtual void SetVerticalMove(float value)
+    {
+        verticalMove = value;
+    }
     private void FixedUpdate()
     {
         Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
@@ -102,7 +111,7 @@ public class MainPlane : MonoBehaviour, IHealth
     {
         if (!coll.gameObject.CompareTag(gameObject.tag))
         {
-            Damage(100);
+            Damage(100,gameObject);
             //collPlane.enabled = false;
 
             //audioPlane.Play();
@@ -120,7 +129,7 @@ public class MainPlane : MonoBehaviour, IHealth
     {
         weapon.FireOnce ();
     }
-    public void Damage(int val)
+    public void Damage(int val, GameObject initiator)
     {
         if (Health <= 0) return;
         Health -= val;

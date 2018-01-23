@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IHealth
 {
     int Health { get; }
-    void Damage(int val);
+    void Damage(int val, GameObject initiator);
 
 }

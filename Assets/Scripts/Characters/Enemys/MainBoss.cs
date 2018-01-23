@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainEnemy : EnemyBase
+public class MainBoss : EnemyBase
 {
     [SerializeField]
-    private Transform enemyPlane;
+    private Transform bossPlane;
     [SerializeField]
-    private GameObject fx;
+    private GameObject bossFx;
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
@@ -20,36 +20,45 @@ public class MainEnemy : EnemyBase
     private float MinX;
     private float MinY;
     private Vector3 direction;
+    private Vector3 leftDirection;
+    private Vector3 rightDirection;
+
     private MainPlane mainPlane;
 
     void Awake()
     {
-        enemyPlane = GetComponent<Transform>();
+        bossPlane = GetComponent<Transform>();
     }
 
     private void Start()
     {
         InvokeRepeating("Fire", 0f, repeatRate);
-        MaxX = MainScreenXY.MaxX;
+        MaxX = MainScreenXY.MaxX - 1;
         MaxY = MainScreenXY.MaxY;
-        MinX = MainScreenXY.MinX;
-        MinY = MainScreenXY.MinY;
-        direction = Vector3.left;
+        MinX = MainScreenXY.MinX + 1;
+        MinY = MainScreenXY.MinY - 1;
+
+        leftDirection = (Vector3.left + Vector3.down * 0.1f).normalized;
+        rightDirection = (Vector3.right + Vector3.down * 0.1f).normalized;
+        direction = leftDirection;
     }
 
     void Update()
     {
-        if (transform.position.x > MaxX)
+        if (transform.position.y < MinY)
         {
-            direction = Vector3.left;
+            Destroy(gameObject);
+        }
+        else if (transform.position.x > MaxX)
+        {
+            direction = leftDirection;
         }
         else if (transform.position.x < MinX)
         {
-            direction = Vector3.right;
+            direction = rightDirection;
         }
 
-        enemyPlane.Translate(direction * speed * Time.deltaTime);
-        //OnTriggerEnter2D( bullet);
+        bossPlane.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -58,7 +67,6 @@ public class MainEnemy : EnemyBase
         {
             //coll.gameObject.SetActive(false );
             //Damage(1);
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~tomorow Write!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //        collEnemy.enabled = false;
 
             //        audioEnemy.Play();
@@ -72,13 +80,18 @@ public class MainEnemy : EnemyBase
     {
         Instantiate(bullet, transform.position, Quaternion.identity);
     }
-    public override void Damage(int val)
+    public override void Damage(int val, GameObject initiator)
     {
         Health -= val;
         if (Health <= 0)
         {
             Destroy(gameObject);
         }
-        print("MainEnemy" + Health);
+        print("Boss" + Health);
     }
+
+    public void OnDestroySelf()
+    {
+        //Instantiate ();
+    } 
 }

@@ -29,7 +29,7 @@ public abstract class MainBullet : MonoBehaviour
     {
         if (collision.GetComponent<IHealth>() != null && !collision.CompareTag(myTag))
         {
-            collision.GetComponent<IHealth>().Damage(power);
+            collision.GetComponent<IHealth>().Damage(power,gameObject);
             //print ("Bullet"+collision .get)
         }
     }

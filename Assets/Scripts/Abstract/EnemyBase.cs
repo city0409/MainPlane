@@ -12,5 +12,5 @@ public class EnemyBase : MonoBehaviour ,IHealth
         protected set { health = value; }
     }
 
-    public virtual void Damage(int val) { }
+    public virtual void Damage(int val, GameObject initiator) { }
 }

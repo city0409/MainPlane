@@ -16,9 +16,9 @@ public class AudioManager : Singleton<AudioManager>
     protected override void Awake()
     {
         base.Awake();
-        musicVolume = gameSetting.musicVolume;
+        musicVolume = gameSetting.musicVolume;//云端下载音量数据
         effectVolume = gameSetting.effectVolume;
-        mixer.SetFloat("Bg", musicVolume);
+        mixer.SetFloat("Bg", musicVolume);//硬盘存储音量数据
         mixer.SetFloat("Fx", effectVolume);
     }
 
@@ -27,9 +27,9 @@ public class AudioManager : Singleton<AudioManager>
         get { return musicVolume; }
         set
         {
-            gameSetting.musicVolume = value;
-            musicVolume = value;
-            mixer.SetFloat("Bg", value);
+            gameSetting.musicVolume = value;//云端存储用户调节数据
+            musicVolume = value;//内存存储用户调节数据，速度快
+            mixer.SetFloat("Bg", value);//硬盘存储用户调节数据
         }
     }
 

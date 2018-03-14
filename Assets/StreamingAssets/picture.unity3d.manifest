@@ -1,0 +1,74 @@
+ManifestFileVersion: 0
+CRC: 3994296750
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d2a3d6a17db31f0caf65bf7c5e380fb7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1f201a7e2e0b91eed0d9b70a8f1a3833
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Picture/Spinner-1s-200px/frame-27.png
+- Assets/Picture/Spinner-1s-200px/frame-28.png
+- Assets/Picture/Spinner-1s-200px/frame-22.png
+- Assets/Picture/Spinner-1s-200px/frame-14.png
+- Assets/Picture/Spinner-1s-200px/frame-1.png
+- Assets/Picture/Materials/13.mat
+- Assets/Picture/Tank.png
+- Assets/Picture/Spinner-1s-200px/frame-13.png
+- Assets/Picture/Frame.png
+- Assets/Picture/MainPlane copy.png
+- Assets/Picture/Spinner-1s-200px/frame-19.png
+- Assets/Picture/Spinner-1s-200px/frame-2.png
+- Assets/Picture/PauseButton01.png
+- Assets/Picture/Materials/11.mat
+- Assets/Picture/Materials/12.mat
+- Assets/Picture/Materials/00.mat
+- Assets/Picture/Spinner-1s-200px/frame-29.png
+- Assets/Picture/Materials/SciFiBackgroundBackSprite.mat
+- Assets/Picture/Spinner-1s-200px/frame-17.png
+- Assets/Picture/PausedBG.png
+- Assets/Picture/Spinner-1s-200px/frame-3.png
+- Assets/Picture/Spinner-1s-200px/frame-23.png
+- Assets/Picture/Materials/BG 1.mat
+- Assets/Picture/Splash.png
+- Assets/Picture/SciFiBackgroundBackSprite.png
+- Assets/Picture/SciFiBackgroundFrontSprite.png
+- Assets/Picture/Boss.png
+- Assets/Picture/Materials/BG.mat
+- Assets/Picture/Spinner-1s-200px/frame-24.png
+- Assets/Picture/Spinner-1s-200px/frame-16.png
+- Assets/Picture/Spinner-1s-200px/frame-8.png
+- Assets/Picture/Spinner-1s-200px/frame-10.png
+- Assets/Picture/Spinner-1s-200px/frame-21.png
+- Assets/Picture/Spinner-1s-200px/frame-9.png
+- Assets/Picture/SciFiBackgroundMiddleSprite.png
+- Assets/Picture/Spinner-1s-200px/frame-11.png
+- Assets/Picture/Spinner-1s-200px/frame-5.png
+- Assets/Picture/NormalEnemy.png
+- Assets/Picture/Spinner-1s-200px/frame-12.png
+- Assets/Picture/Spinner-1s-200px/frame-26.png
+- Assets/Picture/Spinner-1s-200px/frame-25.png
+- Assets/Picture/RetroSpaceship.png
+- Assets/Picture/RetroBullet.png
+- Assets/Picture/Spinner-1s-200px/frame-20.png
+- Assets/Picture/Materials/SciFiBackgroundFrontSprite.mat
+- Assets/Picture/MainPlane.png
+- Assets/Picture/Spinner-1s-200px/frame-4.png
+- Assets/Picture/Spinner-1s-200px/frame-6.png
+- Assets/Picture/RetroExplosion.png
+- Assets/Picture/Spinner-1s-200px/frame-18.png
+- Assets/Picture/Spinner-1s-200px/frame-15.png
+- Assets/Picture/Spinner-1s-200px/frame-0.png
+- Assets/Picture/Spinner-1s-200px/frame-7.png
+Dependencies: []

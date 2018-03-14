@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public static class FadeInOut
 {
 
-    public static IEnumerator FadeImage(Image target, float duration, Color color)
+    public static IEnumerator FadeImage(Image target, float duration, Color color,bool isUnscaleTime)
     {
         if (target == null)
             yield break;
@@ -20,6 +20,10 @@ public static class FadeInOut
             Color targetColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
             target.color = targetColor;
             yield return null;
+            if (isUnscaleTime)
+                t += Time.unscaledDeltaTime / duration;
+            else
+                t += Time.deltaTime / duration;
         }
         target.color = color;
     }

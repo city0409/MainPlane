@@ -1,0 +1,15 @@
+ManifestFileVersion: 0
+CRC: 383029381
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: prefabs.unity3d
+      Dependencies:
+        Dependency_0: picture.unity3d
+        Dependency_1: music.unity3d
+    Info_1:
+      Name: picture.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: music.unity3d
+      Dependencies: {}

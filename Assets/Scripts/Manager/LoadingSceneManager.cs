@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LoadingSceneManager : MonoBehaviour 
+public class LoadSceneManager
 {
 
-	private void Start () 
-	{
-		
-	}
-	
-	private void Update () 
-	{
-		
-	}
+    public static void LoadScene(string name)
+    {
+        LoadScene(SceneUtility.GetBuildIndexByScenePath(name));
+    }
+
+    public static void LoadScene(int index)
+    {
+
+        SceneManager.LoadScene(index);
+        GameManager.Instance.UnPause();
+    }
 }

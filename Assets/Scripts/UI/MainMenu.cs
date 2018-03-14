@@ -1,28 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : Photon.PunBehaviour
 {
     [SerializeField]
-    private string loadSceneName;
+    private string loadSceneName ="";
     [SerializeField]
     private CanvasGroup mainMenuGroup;
     [SerializeField]
     private CanvasGroup optionGroup;
     [SerializeField]
     private CanvasGroup creditGroup;
-     
+    [SerializeField]
+    private CanvasGroup leaderboardGroup;
+    [SerializeField]
+    private CanvasGroup matchGroup;
+
     private Stack<CanvasGroup> canvasGroupStack = new Stack<CanvasGroup>();
     private List<CanvasGroup> canvasGroupList = new List<CanvasGroup>();
+
+    private bool sendedJoinRandomRoom;
 
     private void Start()
     {
         UIManager.Instance.FaderOn(false, 1f);
         canvasGroupList.Add(mainMenuGroup);
         canvasGroupList.Add(optionGroup);
+        canvasGroupList.Add(leaderboardGroup);
         canvasGroupList.Add(creditGroup);
+        canvasGroupList.Add(matchGroup);
 
         canvasGroupStack.Push(mainMenuGroup);
         DisplayMenu();
@@ -38,16 +45,30 @@ public class MainMenu : MonoBehaviour
 
     public void Esc()
     {
-        if (canvasGroupStack.Count <= 1) return;
+        if (canvasGroupStack.Count <= 1 || sendedJoinRandomRoom) return;
 
         canvasGroupStack.Pop();
         DisplayMenu();
     }
-    public void StartButton()
+    public void MatchButton()
     {
-        UIManager.Instance.FaderOn(true, 1f);
-        StartCoroutine(StartLevel());
+        sendedJoinRandomRoom = true;
+        canvasGroupStack.Push(matchGroup);
+        DisplayMenu();
+        PhotonNetwork.JoinRandomRoom();
     }
+
+    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
+    {
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = AppConst.MaxPlayersPerRoom }, null);
+    }
+
+    public void LeaderboardButton()
+    {
+        canvasGroupStack.Push(leaderboardGroup);
+        DisplayMenu();
+    }
+
     public void OptionButton()
     {
         canvasGroupStack.Push(optionGroup);
@@ -62,8 +83,9 @@ public class MainMenu : MonoBehaviour
     private IEnumerator StartLevel()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(loadSceneName);
+        LoadSceneManager.LoadScene(loadSceneName);
     }
+
     private void DisplayMenu()
     {
         foreach (var item in canvasGroupList)

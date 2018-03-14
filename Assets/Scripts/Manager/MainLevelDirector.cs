@@ -76,9 +76,12 @@ public class MainLevelDirector : Singleton<MainLevelDirector>
         mainPlane = Resources.Load<MainPlane>("Prefab/MainPlane");
         mainEnemy = Resources.Load<MainEnemy>("Prefab/Enemys/Enemy");
         bossPlane = Resources.Load<MainBoss>("Prefab/Enemys/Boss");
+        tankPrefab= Resources.Load<TankEnemy>("Prefab/Enemys/Tank");
+
+
+
         dataVolume = Resources.Load<GameData>("GameData");
         data = Resources.Load<PlayerData>("PlayerData");
-        tankPrefab= Resources.Load<TankEnemy>("Prefab/Enemys/Tank");
         maxScore = data.maxScore;
     }
 
@@ -123,6 +126,7 @@ public class MainLevelDirector : Singleton<MainLevelDirector>
         {
             GameOverAction();
         }
+        AddHistoryScore();
     }
 
     public void GameWin()
@@ -132,13 +136,45 @@ public class MainLevelDirector : Singleton<MainLevelDirector>
             GameWinAction();
         }
         StartCoroutine(BackToMenu());
+        AddHistoryScore();
     }
 
-    public IEnumerator BackToMenu()
+    public IEnumerator BackToMenu(float dalayTime=2.0f)
     {
-        yield return new WaitForSeconds(2f);
+        AddHistoryScore();
+        yield return new WaitForSecondsRealtime(dalayTime);
         UIManager.Instance.FaderOn(true, 1f);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSecondsRealtime(1);
         SceneManager.LoadScene(1);
+    }
+
+    private void AddHistoryScore()
+    {
+        if (score < 0) return;
+        if (data.LeaderboardDatas.Count>=10)
+        {
+            for (int i = 0; i < data.LeaderboardDatas.Count; i++)
+            {
+                if (score>data.LeaderboardDatas[i].score)
+                {
+                    LeaderboardData leaderboardData = new LeaderboardData();
+                    leaderboardData.score = score;
+                    leaderboardData.date = System.DateTime.Now.ToString("yy-MM-dd,h:mm:ss tt");
+                    data.LeaderboardDatas.Add(leaderboardData);
+                    break;
+                }
+            }
+            if (data.LeaderboardDatas.Count >10)
+            {
+                data.LeaderboardDatas.RemoveAt(data.LeaderboardDatas.Count-2);
+            }
+        }
+        else
+        {
+            LeaderboardData leaderboardData = new LeaderboardData();
+            leaderboardData.score = score;
+            leaderboardData.date = System.DateTime.Now.ToString("yy-MM-dd,h:mm:ss tt");
+            data.LeaderboardDatas.Add(leaderboardData);
+        }
     }
 }

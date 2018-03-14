@@ -1,0 +1,8 @@
+music.unity3d
+music.unity3d.manifest
+picture.unity3d
+picture.unity3d.manifest
+prefabs.unity3d
+prefabs.unity3d.manifest
+StreamingAssets
+StreamingAssets.manifest

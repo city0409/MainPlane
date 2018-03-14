@@ -1,0 +1,79 @@
+ManifestFileVersion: 0
+CRC: 1886823787
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 268fdd2e1b6d1e8089f92831fd486b50
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e62f3859b1483ec449eb1871781e50b1
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 277f8b102175ae14b8c9f947f9e2175d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 620e22217be1b6545bed27ae4dbd8bda, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 61c184f1b5877444c9f7645029303f18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 78390da35ea34e849bed5f930ca9431a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 396397c434c4563468da7fc32b895647, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 00ade088a42e5cf4da0a73a3925b9e90, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a77c29fa2b0746b419ad21a6fb25f448, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a553cf0d30f8abb4ab99891fdf4fb257, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 382ad9af213edc44698d1e2c6b12908e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cefd100b362602344af3adac3fcf7b80, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7d68f9afccfe02f478237b69ce24c60f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Prefab/Enemys/Enemy.prefab
+- Assets/Resources/Prefab/Crafts/RewardBullet.prefab
+- Assets/Resources/Prefab/Explosions/Explosion.prefab
+- Assets/Resources/Prefab/MainPlane.prefab
+- Assets/Resources/Prefab/Crafts/BulletEnemy.prefab
+- Assets/Resources/Prefab/Enemys/Tank.prefab
+- Assets/Resources/Prefab/Crafts/Bullet.prefab
+- Assets/Resources/Prefab/Crafts/BulletBoss.prefab
+- Assets/Resources/Prefab/Crafts/Coin.prefab
+- Assets/Resources/Prefab/Enemys/Boss.prefab
+Dependencies:
+- D:/Documents/GitHub/MainPlane/Assets/StreamingAssets/picture.unity3d
+- D:/Documents/GitHub/MainPlane/Assets/StreamingAssets/music.unity3d

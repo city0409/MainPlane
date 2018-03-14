@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 4242931427
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7fc05ec9aa6a374db3dcb6ea01afa95c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0649c244a4f6917930c70b8289c686de
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 241
+  Script: {instanceID: 0}
+- Class: 243
+  Script: {instanceID: 0}
+- Class: 245
+  Script: {instanceID: 0}
+Assets:
+- Assets/Music/FX/Laser_Shoot01.wav
+- Assets/Music/Mixer.mixer
+- Assets/Music/Pause.mixer
+- Assets/Music/FX/bombCollect.wav
+- Assets/Music/FX/bazooka.wav
+- Assets/Music/Music/PercussionSpaceMusic.mp3
+- Assets/Music/FX/CoinAudio.wav
+- Assets/Music/Music/ChillMusic.mp3
+- Assets/Music/Music/MainTheme.wav
+- Assets/Music/FX/bigBoom.ogg
+- Assets/Music/FX/Explosion31.wav
+- Assets/Music/Music/Miami Memories.mp3
+- Assets/Music/Music/RelaxedSpaceMusic.mp3
+Dependencies: []

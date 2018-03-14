@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlane : MonoBehaviour, IHealth
+public class MainPlane : Photon.PunBehaviour, IHealth
 {
     protected float horizontalMove;
     protected float verticalMove;
@@ -23,6 +23,9 @@ public class MainPlane : MonoBehaviour, IHealth
     private int health = 100;
     //private Animation anim;
     private Weapon weapon;
+    private Vector3 targetPosition;
+    private Quaternion targetRotation;
+
 
     //enum State { Blink, Idle }
     //private State myState;
@@ -56,71 +59,88 @@ public class MainPlane : MonoBehaviour, IHealth
 
     }
 
+    
+
+    private void Start()
+    {
+        MaxX = MainScreenXY.MaxX - 0.3f;
+        MaxY = MainScreenXY.MaxY - 0.3f;
+        MinX = MainScreenXY.MinX + 0.3f;
+        MinY = MainScreenXY.MinY + 0.3f;
+        //StartCoroutine(ChangState());
+    }
+    private void Update()
+    {
+        if (!photonView.isMine)
+        {
+            SmoothMove();
+        }
+      
+        ClampFrame();
+    }
+
+    #region Move
+    public virtual void SetHorizontalMove(float value)
+    {
+        if (!photonView.isMine) return;
+        horizontalMove = value;
+    }
+    public virtual void SetVerticalMove(float value)
+    {
+        if (!photonView.isMine) return;
+        verticalMove = value;
+    }
+    //invoke by photon
+    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
+        else
+        {
+            targetPosition = (Vector3)stream.ReceiveNext();
+            targetRotation = (Quaternion)stream.ReceiveNext();
+        }
+    }
+    private void SmoothMove()
+    {
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.25f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.25f);
+    }
+    private void FixedUpdate()
+    {
+        if (!photonView.isMine) return;
+        Vector3 direction = new Vector3(horizontalMove, verticalMove, 0);
+        Move(direction);
+    }
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (!coll.gameObject.CompareTag(gameObject.tag))
+        {
+            Damage(100,gameObject);
+        }
+    }
     private IEnumerator DalayColl()
     {
         yield return new WaitForSeconds(2);
         collPlane.enabled = true;
     }
-
-    private void Start()
-    {
-        MaxX = MainScreenXY.MaxX - 1;
-        MaxY = MainScreenXY.MaxY - 1;
-        MinX = MainScreenXY.MinX + 1;
-        MinY = MainScreenXY.MinY + 1;
-        //StartCoroutine(ChangState());
-    }
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            FireOnce();
-        }
-        if (Input.GetButton("Fire1"))
-        {
-            FireStart();
-        }
-        ClampFrame();
-    }
-
     private void ClampFrame()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, MinX, MaxX),
                                              Mathf.Clamp(transform.position.y, MinY, MaxY),
                                              transform.position.z);
     }
-    public virtual void SetHorizontalMove(float value)
-    {
-        horizontalMove = value;
-    }
-    public virtual void SetVerticalMove(float value)
-    {
-        verticalMove = value;
-    }
-    private void FixedUpdate()
-    {
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        Move(direction);
-    }
     private void Move(Vector3 direction)
     {
         rig.velocity = direction * speed;
     }
-   
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (!coll.gameObject.CompareTag(gameObject.tag))
-        {
-            Damage(100,gameObject);
-            //collPlane.enabled = false;
+    #endregion
 
-            //audioPlane.Play();
-            //rend.enabled = false;
-            //Destroy(this.gameObject, audioPlane.clip.length);
 
-        }
-    }
-
+    #region Fire
     public void FireStart()
     {
         weapon.FireStart();
@@ -129,15 +149,20 @@ public class MainPlane : MonoBehaviour, IHealth
     {
         weapon.FireOnce ();
     }
+    #endregion
+
+
+    #region Health
     public void Damage(int val, GameObject initiator)
     {
-        if (Health <= 0) return;
         Health -= val;
         if (Health <= 0)
         {
-            DestroySelf();
+            if (AppConst.DebugMode == false)
+            {
+                DestroySelf();
+            }
         }
-        print("MainPlane" + Health);
     }
 
     public void DestroySelf()
@@ -150,7 +175,8 @@ public class MainPlane : MonoBehaviour, IHealth
         Destroy(gameObject);
 
     }
-    
+    #endregion
+
     //private IEnumerator ChangState()
     //{
     //    yield return new WaitForSeconds(2);
